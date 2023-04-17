@@ -15,7 +15,7 @@ body {
   padding: 16px;
   border: 5px solid black;
   overflow-y: scroll;
-  font-family: 'Arial';
+  font-family: "Arial";
 }
 
 h1 {
@@ -63,6 +63,7 @@ button:hover {
   margin: 10px 0;
   padding: 16px;
   border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
 .copy .copy-title {
@@ -70,7 +71,12 @@ button:hover {
   text-transform: capitalize;
 }
 
-.copy:hover {
+.copy:hover:not(.copied) {
   cursor: pointer;
   background-color: #d6d6d6;
+}
+
+.copied {
+  background-color: rgb(137, 217, 137);
+  position: relative;
 }
