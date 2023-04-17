@@ -26,15 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-document.addEventListener("paste", function (e) {
-  console.log("The Past is Happens");
-  console.log(e.clipboardData.types);
-  ["text/plain", "text/html"].forEach((format) => {
-    console.log(`Format: ${format}`);
-    console.log(e.clipboardData.getData(format));
-  });
-});
-
 function toggleForm() {
   document.getElementById("create-copy-form").classList.toggle("active");
 
@@ -69,9 +60,7 @@ function createCopy(title, value, addToLocalStorage = true) {
   newDiv.appendChild(copyContents);
   newDiv.addEventListener("click", () => copyValue(newDiv.id));
 
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild(newDiv);
-  document.getElementById("all-copies").append(fragment);
+  document.getElementById("all-copies").append(newDiv);
 
   if (addToLocalStorage) {
     const existingCopies = JSON.parse(localStorage.getItem("EXT_COPIES"));
