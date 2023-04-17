@@ -70,7 +70,6 @@ function createCopy(title, value, addToLocalStorage = true) {
     tinymce.get("create-copy-textarea").setContent("");
   }
 }
-
 function copyValue(id) {
   const copy = document.querySelector(`#${id}`);
   const copyContents = document.querySelector(`#${id} div.copy-value`).textContent;
@@ -80,7 +79,7 @@ function copyValue(id) {
 
   setTimeout(() => {
     copy.classList.remove("copied");
-  }, 1000);
+  }, 500);
 }
 function clearLocalCopies() {
   localStorage.setItem("EXT_COPIES", "[]");
@@ -93,7 +92,6 @@ function seedCopies(numberOfCopies) {
   (function myLoop(i) {
     setTimeout(function () {
       createCopy(`Test ${i}`, Math.floor(Math.random() * 999999));
-      console.log(i);
       if (--i) myLoop(i);
     }, 100);
   })(numberOfCopies);
