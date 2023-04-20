@@ -6,15 +6,17 @@
   </head>
   <body>
     <button id="create-copy">Add Copy</button>
-    <button id="clear-local">Clear Local Storage</button>
+    <button id="clear-local">Delete All Copies</button>
     <button id="seed-copies">Seed Copies</button>
     <form id="create-copy-form">
+      <p>Use "[[" and "]]" to create variable text! Ex: [[username]]</p>
       <input type="text" placeholder="Copy Name" id="create-copy-name" />
       <textarea id="create-copy-textarea" placeholder="Copy Text" rows="12"></textarea>
       <button>Add Copy</button>
     </form>
     <h1>My Copies</h1>
     <div id="all-copies"></div>
+    <form id="params-form"><button type="submit">Copy Template</button> <button id="close-params-form-btn" type="button">Exit</button></form>
     <script src="scripts/popup.js"></script>
     <script>
       tinymce.init({
