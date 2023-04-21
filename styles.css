@@ -9,18 +9,22 @@ html {
   overflow: auto;
 }
 body {
+  position: relative;
   height: 600px;
   width: 800px;
   background-color: #2f2f2f;
   padding: 16px;
   border: 5px solid black;
   overflow-y: scroll;
-  font-family: "Arial";
+  font-family: 'Arial';
 }
 
 h1 {
   color: #fff;
   margin: 12px 0;
+}
+
+input {
 }
 
 #create-copy.cancel-action {
@@ -37,10 +41,17 @@ h1 {
   flex-direction: column;
 }
 
+#create-copy-form p {
+  color: #fff;
+  padding: 12px 0;
+}
+
 #create-copy-form input,
 #create-copy-form textarea {
   margin: 8px 0;
   padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
 button {
@@ -79,4 +90,59 @@ button:hover {
 .copied {
   background-color: rgb(137, 217, 137);
   position: relative;
+}
+
+#params-form {
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  background-color: #2f2f2f;
+  padding: 16px;
+}
+.param-field {
+  padding: 25px;
+  display: flex;
+}
+.param-field label {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 32px;
+  padding: 12px;
+}
+
+.param-field input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #bbb;
+  color: white;
+  font-weight: bold;
+}
+
+.param-field input::placeholder {
+  color: rgb(187, 187, 187);
+}
+.param-field input:focus {
+  outline: none;
+}
+.tox .tox-tinymce {
+  height: 375px;
+}
+.tox-editor-header,
+.tox-statusbar {
+  display: none !important;
+}
+
+#seed-copies {
+  display: none;
+}
+
+.destructive-action-btn {
+  border-color: tomato;
+}
+.destructive-action-btn:hover {
+  background-color: #a7402e;
 }
