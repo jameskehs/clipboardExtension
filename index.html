@@ -2,10 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="styles.css" />
-    <script
-      src="https://cdn.tiny.cloud/1/6r3pvcyktamk20arfxdn8q30q4pd9f9wasshz7699tmwhi9k/tinymce/6/tinymce.min.js"
-      referrerpolicy="origin"
-    ></script>
+    <script src="./tinymce/js/tinymce/tinymce.min.js"></script>
   </head>
   <body>
     <button id="create-copy">Add Copy</button>
@@ -24,10 +21,5 @@
       <button id="close-params-form-btn" class="destructive-action-btn" type="button">Exit</button>
     </form>
     <script src="scripts/popup.js"></script>
-    <script>
-      tinymce.init({
-        selector: '#create-copy-textarea',
-      });
-    </script>
   </body>
 </html>

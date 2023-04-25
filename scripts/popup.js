@@ -1,3 +1,7 @@
+tinymce.init({
+  selector: '#create-copy-textarea',
+});
+
 const copies = [];
 const createCopyBtn = document.getElementById('create-copy');
 const newCopyForm = document.getElementById('create-copy-form');
