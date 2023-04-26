@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "@types/node": "^18.16.1",
+    "@types/tinymce": "^4.6.5"
+  }
+}
