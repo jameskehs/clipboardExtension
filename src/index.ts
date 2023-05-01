@@ -120,11 +120,9 @@ function enableEditParams(copy: Copy): void {
   const copyDiv = document.querySelector(`#${copy.id}`)!;
   const copyContents = document.querySelector(`#${copy.id} div.copy-value`)!.textContent || "";
   const distanceFromTop = document.querySelector("body")!.scrollTop;
-  console.log(distanceFromTop);
   document.querySelector("body")!.scrollTop = 0;
   paramsForm.style.display = "block";
-
-  copy.params.reverse().forEach((param) => {
+  copy.params.forEach((param) => {
     const newDiv = document.createElement("div");
     const newLabel = document.createElement("label");
     const newInput = document.createElement("input");
@@ -138,11 +136,11 @@ function enableEditParams(copy: Copy): void {
     newDiv.appendChild(newLabel);
     newDiv.appendChild(newInput);
 
-    paramsForm.prepend(newDiv);
+    document.getElementById("params-form-inputs")!.append(newDiv);
   });
 
-  paramsForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+  function submitParams(event: Event): void {
+    event.preventDefault();
     const allInputs = document.querySelectorAll(".param-field input") as NodeListOf<HTMLInputElement>;
     let alteredcopy = copyContents;
 
@@ -150,7 +148,6 @@ function enableEditParams(copy: Copy): void {
       const regex = new RegExp(`\\[\\[(${input.name})\\]\\]`, "gi");
       alteredcopy = alteredcopy.replace(regex, input.value);
     });
-
     navigator.clipboard.writeText(alteredcopy);
     document.querySelectorAll(".param-field").forEach((e) => e.remove());
     paramsForm.style.display = "none";
@@ -159,7 +156,10 @@ function enableEditParams(copy: Copy): void {
     setTimeout(() => {
       copyDiv.classList.remove("copied");
     }, 500);
-  });
+    paramsForm.removeEventListener("submit", submitParams, true);
+  }
+
+  paramsForm.addEventListener("submit", submitParams, true);
 }
 
 function clearLocalCopies(): void {

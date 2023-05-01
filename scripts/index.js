@@ -101,10 +101,9 @@ function enableEditParams(copy) {
     const copyDiv = document.querySelector(`#${copy.id}`);
     const copyContents = document.querySelector(`#${copy.id} div.copy-value`).textContent || "";
     const distanceFromTop = document.querySelector("body").scrollTop;
-    console.log(distanceFromTop);
     document.querySelector("body").scrollTop = 0;
     paramsForm.style.display = "block";
-    copy.params.reverse().forEach((param) => {
+    copy.params.forEach((param) => {
         const newDiv = document.createElement("div");
         const newLabel = document.createElement("label");
         const newInput = document.createElement("input");
@@ -115,10 +114,10 @@ function enableEditParams(copy) {
         newInput.required = true;
         newDiv.appendChild(newLabel);
         newDiv.appendChild(newInput);
-        paramsForm.prepend(newDiv);
+        document.getElementById("params-form-inputs").append(newDiv);
     });
-    paramsForm.addEventListener("submit", (e) => {
-        e.preventDefault();
+    function submitParams(event) {
+        event.preventDefault();
         const allInputs = document.querySelectorAll(".param-field input");
         let alteredcopy = copyContents;
         allInputs.forEach((input) => {
@@ -133,7 +132,9 @@ function enableEditParams(copy) {
         setTimeout(() => {
             copyDiv.classList.remove("copied");
         }, 500);
-    });
+        paramsForm.removeEventListener("submit", submitParams, true);
+    }
+    paramsForm.addEventListener("submit", submitParams, true);
 }
 function clearLocalCopies() {
     localStorage.setItem("EXT_COPIES", "[]");

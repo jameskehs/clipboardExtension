@@ -1,4 +1,6 @@
 {
+  "name": "clipboardExt",
+  "version": "1.0",
   "devDependencies": {
     "typescript": "^5.0.4"
   },
